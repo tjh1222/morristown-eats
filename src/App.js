@@ -1,10 +1,14 @@
 import NavBar from './components/NavBar';
+import Background from './components/Background';
+
+
 
 function App() {
   return (
-    <div>
+    <>
       <NavBar />
-    </div>
+      <Background />
+    </>
   );
 }
 
