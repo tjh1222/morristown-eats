@@ -3,6 +3,39 @@
   padding: 0;
 }
 
+.suggestions {
+  color: gray;
+  width: 100%;
+  list-style: none;
+  box-sizing: border-box;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.suggestions:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: blue;
+}
+
+.suggestion-container {
+  width: 80%;
+  display: block;
+  box-sizing: border-box;
+  background-color: white; 
+}
+
+.suggestion-container {
+  border: 1px black solid;
+}
+
+.search-container {
+  width: 500px;
+  margin: 0 auto 0 auto;
+}
+
 .background-container {
   box-sizing: border-box;
   width: 100%;
@@ -26,23 +59,22 @@ form {
 }
 
 .search {
-  display: block;
-  width: 500px;
+  display:inline-block; 
+  box-sizing: border-box;
+  width: 80%;
   height: 40px;
-  border-radius: 50px;
   margin-right: auto;
   margin-left: auto;
   border: 1px black solid;
   padding-left: 20px;
+  padding-right: 20px;
+  outline: none;
 }
 
 button {
-  margin-top: 10px;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  width: 100px;
-  height: 25px;
-  border-radius: 50px;
-  border: 1px black solid;
+  display:inline-block;
+  box-sizing: border-box;
+  margin-top: 20px;
+  width: 20%;
+  height: 40px;
 }

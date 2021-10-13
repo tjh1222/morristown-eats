@@ -10,6 +10,7 @@ import Register from './components/Register';
 
 function App() {
   return (
+
     <Router>
       <NavBar />
       <Switch>
@@ -26,7 +27,7 @@ function App() {
           <Register />
         </Route>
       </Switch>
-    </Router>
+    </Router> 
   );
 }
 
