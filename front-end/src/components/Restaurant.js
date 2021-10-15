@@ -18,6 +18,7 @@ function Restaurant(props) {
       setReviews([...reviewData.data.items]);
     }
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -9,6 +9,21 @@ import SearchResults from './components/SearchResults';
 import Restaurant from './components/Restaurant';
 
 
+function renderSearchResults(location) {
+  let params = new URLSearchParams(location.search);
+  let name = params.get('name');
+  let page = params.get('page');
+
+
+  if (page) {
+    return (
+      <SearchResults name={name} page={page}/>
+    )
+  }
+  return (
+    <SearchResults name={name} page={1}/>
+  )
+}
 
 function App() {
   const location = useLocation();
@@ -33,7 +48,7 @@ function App() {
         </Route>
 
         <Route exact path="/search">
-          <SearchResults name={new URLSearchParams(location.search).get('name')}/>
+          {renderSearchResults(location)}
         </Route>
       </Switch>
     </>

@@ -18,3 +18,9 @@
   padding: 5px;
 }
 
+.next-page {
+  display: inline-block;
+  padding: 10px;
+  margin-left: 5px;
+  border: 1px black solid;
+}
