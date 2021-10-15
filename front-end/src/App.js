@@ -1,21 +1,23 @@
 import NavBar from './components/NavBar';
-import Background from './components/Background';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SearchBar from './components/SearchBar';
+import { Route, Switch, useLocation} from 'react-router-dom';
 import './App.css';
 import About from './components/About';
 import Login from './components/Login';
 import Register from './components/Register';
+import SearchResults from './components/SearchResults';
+import Restaurant from './components/Restaurant';
 
 
 
 function App() {
+  const location = useLocation();
   return (
-
-    <Router>
+    <>
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <Background />  
+          <SearchBar />  
         </Route>
         <Route exact path="/about">
           <About />
@@ -26,8 +28,16 @@ function App() {
         <Route exact path="/register">
           <Register />
         </Route>
+        <Route exact path="/restaurant/:id">
+          <Restaurant/>
+        </Route>
+
+        <Route exact path="/search">
+          <SearchResults name={new URLSearchParams(location.search).get('name')}/>
+        </Route>
       </Switch>
-    </Router> 
+    </>
+
   );
 }
 

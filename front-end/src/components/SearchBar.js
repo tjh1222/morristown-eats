@@ -1,27 +1,29 @@
-import './Background.css';
-import { useState } from 'react';
-
-
-let data = [
-  "Laku Sushi",
-  "Masago",
-  "Pomodoros Pizza",
-  "Rauls Empanadas",
-  "Sterling Tavern",
-  "South and Pine",
-  "Sushi Lounge",
-  "Nagano",
-  "Tacoria",
-  "The Office"
-];
+import './SearchBar.css';
+import { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 
 
 
-function Background() {
+
+function SearchBar() {
   const [ recommendations, setRecommendations ] = useState([]);
   const [ search, setSearch ] = useState("");
+  const [ data, setData ] = useState([]);
+  let history = useHistory();
 
+
+  useEffect(() => {
+    async function fetchData() {
+      let response = await axios("http://localhost:5000/restaurants");
+      setData([...response.data.places]);
+
+    }
+
+    fetchData();
+
+  }, []);
 
   function updateSearch(e) {
     setSearch(e.target.firstChild.data);
@@ -41,7 +43,8 @@ function Background() {
   function findSuggestions(e) {
     const { value } = e.target;
     let regex = new RegExp(`${value}`, "ig");
-    let matches = data.filter((item) => regex.test(item));
+    let matches = data.filter((item) => regex.test(item.name));
+    matches = matches.map(match => match.name);
     setRecommendations([
       ...matches
     ]);
@@ -56,13 +59,19 @@ function Background() {
     setRecommendations([]);
   }
 
+  function submit(e) {
+    e.preventDefault();
+    history.push(`/search?name=${search}`);
+  }
+
 
   return (
-    <div onClick={()=> clearSuggestions()}className="background-container">
+    <div onClick={()=> clearSuggestions()} className="background-container">
 
       <div className="search-container">
-        <form>
-            <input value={search} onChange={(e) => updateState(e)} className="search" type="search" name ="q" placeholder="Where do you want to go?" autoComplete="off"></input><button type="submit">Search</button>
+        <form onSubmit={submit}>
+            <input value={search} onChange={(e) => updateState(e)} className="search" type="search" name ="q" placeholder="Where do you want to go?" autoComplete="off"></input>
+            <button type="submit">Search</button>
         </form>
         {
           (search) ? displaySuggestions(recommendations) : null
@@ -73,6 +82,6 @@ function Background() {
   );
 }
 
-export default Background;
+export default SearchBar;
 
 

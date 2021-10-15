@@ -1,0 +1,20 @@
+.search-results-container {
+  text-align: left;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+.search-page-container {
+  text-align: center;
+}
+
+
+.search-results-container ol {
+  display: block;
+  margin: 0 auto 0 auto;
+}
+
+.search-results-container li {
+  padding: 5px;
+}
+
